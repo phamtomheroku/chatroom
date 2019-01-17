@@ -1,13 +1,18 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+const path = require('path')
 
-// Routes
+const port = process.env.PORT || 3000
+// Middleware for misc
+app.use(express.static('./public'))
+
+// Routes 
 var indexRouter = require('./routes/index')
 
 
 // Middleware for routes
 app.use('/', indexRouter)
+
 
 
 // Start listening on the specified port
