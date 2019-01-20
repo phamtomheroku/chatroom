@@ -1,5 +1,5 @@
 // Chat code
-
+var socket = io()
 var app = new Vue({
     el: "#app",
     data: {
@@ -9,8 +9,13 @@ var app = new Vue({
     },
     methods: {
         sendMessage: function(event){
-            this.chatMessages.push(this.newMessage)
+            //this.chatMessages.push(this.newMessage)
+            socket.emit('chat message',this.newMessage)
             this.newMessage = ''
         }
     }
+})
+
+socket.on('chat from server', function(msg){
+    app.chatMessages.push(msg)
 })
