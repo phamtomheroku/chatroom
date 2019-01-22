@@ -9,7 +9,7 @@ var app = new Vue({
     },
     methods: {
         sendMessage: function(event){
-            //this.chatMessages.push(this.newMessage)
+            this.chatMessages.push(this.newMessage)
             socket.emit('chat message',this.newMessage)
             this.newMessage = ''
         }

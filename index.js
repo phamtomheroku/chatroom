@@ -36,6 +36,6 @@ io.on('connection', (socket)=>{
     })
     socket.on('chat message',(msg)=>{
         //console.log('message: ' + msg)
-        io.emit('chat from server', msg)
+        socket.broadcast.emit('chat from server', msg)
     })
 })
