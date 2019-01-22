@@ -3,14 +3,15 @@ var socket = io()
 var app = new Vue({
     el: "#app",
     data: {
-        message: 'Hello Chat!',
-        chatMessages: ['Hello, Welcome to the chat!', 'Send a message to the group'],
+        currentUser: '',
+        chatMessages: [{user:'server', message:'Hello, Welcome to the chat!'}, {user: 'server', message:'Send a message to the group'}],
         newMessage: ''
     },
     methods: {
         sendMessage: function(event){
-            this.chatMessages.push(this.newMessage)
-            socket.emit('chat message',this.newMessage)
+            const msgObject = {user : this.currentUser, message: this.newMessage}
+            this.chatMessages.push(msgObject)
+            socket.emit('chat message', msgObject)
             this.newMessage = ''
         }
     }

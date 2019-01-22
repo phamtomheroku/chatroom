@@ -11,12 +11,14 @@
    <div id="app">  
         <h1>Welcome to the ChatRoom</h1>
         <ul id="Chat">
-            <li v-for="message in chatMessages">
-                {{message}}
+            <li v-for="object in chatMessages">
+                {{object.user}} : {{ object.message }} 
             </li>
         </ul>    
         <input type="text" v-model="newMessage" id="newMessage">
         <input type="button" v-on:click="sendMessage" value="Send">
+        <hr>
+        <input type="text" v-model="currentUser" id="currentUser" placeholder="Type your username...">
    </div>
     <script src= "/socket.io/socket.io.js"></script>
     <script src="chat.js"></script>
