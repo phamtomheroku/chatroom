@@ -1,5 +1,6 @@
 // Chat code
 var socket = io()
+
 var app = new Vue({
     el: "#app",
     data: {
@@ -13,9 +14,20 @@ var app = new Vue({
             this.chatMessages.push(msgObject)
             socket.emit('chat message', msgObject)
             this.newMessage = ''
+            
+        },
+        scrolltoEnd: function(event){
+            var container = document.getElementById("Chat")
+            var scrollHeight = container.scrollHeight
+            container.scrollTop = scrollHeight
         }
+    } ,
+    updated() {
+        console.log('scrolling')
+        this.scrolltoEnd()
     }
 })
+
 
 socket.on('chat from server', function(msg){
     app.chatMessages.push(msg)
