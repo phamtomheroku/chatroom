@@ -5,7 +5,7 @@ var app = new Vue({
     el: "#app",
     data: {
         currentUser: '',
-        chatMessages: [{user:'server', message:'Hello, Welcome to the chat!'}, {user: 'server', message:'Send a message to the group'}],
+        chatMessages: [{user:'server', message:'Hello, Welcome to the chat!'}, {user: 'server', message:'Bab'}],
         newMessage: ''
     },
     methods: {
